@@ -1,0 +1,3 @@
+Functions do processo de automação estão configuradas no "profile_AllUsersAllHosts.ps1" em: \\10.208.160.23\clientsupdates$\SuporteMES\Configuracao\profile
+
+aqui somente serão armazenadas funões no geral

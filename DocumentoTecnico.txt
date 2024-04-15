@@ -1,0 +1,41 @@
+MANUAL TÉCNICO DE DA CONFIGURAÇÃO DE MCM
+
+1 PROFILE:
+Nele podemos criar funções, métodos, aliases entre outras diversas configurações do perfil
+Nesse projeto foi configurado o profile para todos usuários e hosts, visando integrar a utilização de métodos entre hosts e usuários.
+No profile é utilizado apenas o essêncial para o funcionamento dos processos como um todo, assim precisando apenas decarar uma vez as funções e mensagens, diminuindo o consumo do processador.
+É de extrema importância manter um backup para o profile, pois ele é critico nessa automação. Qualquer alteração precisa passar por diversos testes antes de colocar em produção.
+
+dir: \\10.208.160.23\clientsupdates$\SuporteMES\Configuracao\profile
+
+
+2 - ALL SCRIPTS
+Estes tem como única dependência o PROFILE, sem interferência de outros scripts. No caminho ALL_RPA_PROCESS, deve-se manter cada função do processo de configuração em arquivos separados, Tanto com SHORTCUT (.lnk), como SCRIPT (.Ps1).
+
+dir: \\10.208.160.23\clientsupdates$\SuporteMES\Configuracao\All_RPA_Process
+
+
+3 - MAIN SCRIPTS
+Estes dependem do PROFILE e do ALL SCRIPTS.
+Aqui deve-se manter Scripts em ordem de dependência, alguns processos tem dependências, como por exêmplo:
+antes de dar permissão para uma pasta, ela deve ser cirada/existir. Então, no MAIN_RPA_PROCESS, são criados scripts que carregam seus processos dependentes na ordem correta (executando os arquivos do All SCRIPTS)
+
+dir: \\10.208.160.23\clientsupdates$\SuporteMES\Configuracao\Main_RPA_Process 
+
+
+4 - SCRIPTS AUXILIARES
+Como criar SHORTCUTS:
+em: \\10.208.160.23\clientsupdates$\SuporteMES\Scripts Auxiliares\Create_all_Shortcut_Update.ps1
+Preencher as variável $sourceDir e $destinationDir para fazer todos arquivos.ps1 do $sourceDir gerarem um shortcut.lnk no $destinationDir.
+
+em: \\10.208.160.23\clientsupdates$\SuporteMES\Scripts Auxiliares
+Preencher as variável $sourceDir, $destinationDir e $name do script: Create_Shortcut.ps1
+para fazer o arquivo.ps1 $name do $sourceDir gerar um shortcut.lnk no $destinationDir.
+
+5 - REG 
+Nessa pasta se encontram todos os arquivos de entrada de registro utilizadas na configuração de MCM.
+
+dir: \\10.208.160.23\clientsupdates$\SuporteMES\Configuracao\REG
+
+6 - FUNCTIONS 
+Nessa pasta é armazenada toda function criada que seja útil nos processos de configuração.
